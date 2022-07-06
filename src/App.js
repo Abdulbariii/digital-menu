@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route, Link } from "react-router-dom";
+import Food from "./pages/Food";
+import Order from "./pages/Order";
+import Navbar from "./components/Navbar";
+import { useState } from "react";
 
 function App() {
+  const [order, setOrder] = useState([]);
+  const [version, setVersion] = useState([]);
+  function combine(prevOrder) {
+    setOrder((prev) => {
+      console.log(...prev);
+      return [...prev, prevOrder];
+    });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App h-screen">
+      <Navbar></Navbar>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Food combine={combine} order={order} setOrder={setOrder}></Food>
+          }
+        />
+        <Route path="/Order" element={<Order order={order}></Order>} />
+      </Routes>
     </div>
   );
 }
