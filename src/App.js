@@ -10,7 +10,6 @@ function App() {
   const [version, setVersion] = useState([]);
   function combine(prevOrder) {
     setOrder((prev) => {
-      console.log(...prev);
       return [...prev, prevOrder];
     });
   }
