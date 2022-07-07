@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Food from "./pages/Food";
 import Order from "./pages/Order";
 import Navbar from "./components/Navbar";
@@ -7,7 +7,6 @@ import { useState } from "react";
 
 function App() {
   const [order, setOrder] = useState([]);
-  const [version, setVersion] = useState([]);
   function combine(prevOrder) {
     setOrder((prev) => {
       console.log(...prev);
